@@ -15,10 +15,14 @@ const movieAPI = {
         }
     },
     addMovie: (movie: any) => {
-        return axiosClient.post("QuanLyPhim/ThemPhimUpLoadHinh", {
-            ...movie,
-            maNhom: "GP01",
-        })
+        //KHi dữ liệu lên sv là file-> thành dạng multipart/form-data
+        const formData=new FormData();
+        for (let key in movie){
+            formData.append(key,movie[key])
+        }
+        formData.append("maNhom","GP01");
+
+        return axiosClient.post("QuanLyPhim/ThemPhimUpLoadHinh", formData)
     }
 }
 export default movieAPI;
