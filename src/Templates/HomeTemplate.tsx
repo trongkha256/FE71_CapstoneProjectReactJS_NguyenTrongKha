@@ -4,11 +4,11 @@ import HeaderHome from '../Components/HeaderHome/HeaderHome'
 
 type Props = {}
 
-function HomeTemplate({}: Props) {
+function HomeTemplate({ }: Props) {
   return (
     <div>
-        <HeaderHome />
-        <Outlet />
+      <HeaderHome />
+      <Outlet />
     </div>
   )
 }

@@ -7,6 +7,9 @@ import Login from './Pages/Login/Login';
 import About from './Pages/About/About';
 import GlobalStyle from './GlobalStyle';
 import Register from 'Pages/Register/Register';
+import Checkout from 'Pages/Checkout/Checkout';
+import ProtectedRoute from 'Routes/ProtectedRoute';
+import AddMovie from 'Pages/AddMovie/AddMovie';
 
 function App(): React.ReactElement {
   return (
@@ -17,6 +20,11 @@ function App(): React.ReactElement {
           <Route path='login' element={<Login />}></Route>
           <Route path='Register' element={<Register />}></Route>
           <Route path='about' element={<About />}></Route>
+          <Route path='checkout' element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>}></Route>
+          <Route path='movies/add' element={<AddMovie />}></Route>
           <Route index element={<HomePage />}></Route>
           <Route path='*' element={<Navigate to={''} />}></Route>
         </Route>
