@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import store from "configStore";
 
 const axiosClient = axios.create({
     baseURL: "https://movienew.cybersoft.edu.vn/api",
@@ -13,7 +14,10 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
     (config) => {
         if (config.headers) {
-            config.headers.demo = "FE71";
+            const { accessToken = "" } = store.getState().auth.user || {}
+            if (accessToken) {
+                config.headers.Authorization = `Bearer ${accessToken}`
+            }
         }
         return config;
     }

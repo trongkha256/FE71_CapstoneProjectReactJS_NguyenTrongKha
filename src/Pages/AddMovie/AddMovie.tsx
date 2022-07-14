@@ -11,9 +11,8 @@ interface MovieValues {
     ngayKhoiChieu: string;
 }
 
-type Props = {}
 
-const AddMovie = (props: Props) => {
+const AddMovie = () => {
     const { register, handleSubmit } = useForm<MovieValues>({
         mode: "onTouched",
     })
